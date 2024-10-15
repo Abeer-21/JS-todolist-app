@@ -3,7 +3,7 @@ const formElement = document.getElementById("todo-form");
 const input = document.getElementById("todo-input");
 const todoListElement = document.getElementById("todo-list");
 const todoCounter = document.getElementById("todo-counter");
-const notificationElemen = document.getElementById("notification");
+const notificationElement = document.getElementById("notification");
 let currentEditingId = null;
 
 // Add section
@@ -13,11 +13,12 @@ formElement.addEventListener("submit", (event) => {
   const newTodo = {
     id: new Date().getTime(),
     name: input.value,
+    completed: false,
   };
 
   if (currentEditingId) {
     toDoTasks = toDoTasks.map((task) =>
-      task.id === currentEditingId ? newTodo : task
+      task.id === currentEditingId ? { ...newTodo, id: currentEditingId } : task
     );
     currentEditingId = null;
   } else {
@@ -47,32 +48,18 @@ const deleteToDoItemById = (id) => {
   updateTodoCounter();
 };
 
-//Search section
+// Search section
 function myFunction() {
-  // Declare variables
-  var input, filter, ul, li, span, i, txtValue;
-  input = document.getElementById("search-input");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("todo-list");
-  li = ul.getElementsByTagName("li");
+  const input = document.getElementById("search-input").value.toUpperCase();
+  const li = todoListElement.getElementsByTagName("li");
 
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    span = li[i].getElementsByTagName("span")[0]; // Change from <a> to <span>
-    txtValue = span.textContent || span.innerText; // Access text from <span>
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = ""; // Show the matching item
-    } else {
-      li[i].style.display = "none"; // Hide the non-matching item
-    }
+  for (let i = 0; i < li.length; i++) {
+    const span = li[i].getElementsByTagName("span")[0];
+    const txtValue = span.textContent || span.innerText;
+    li[i].style.display =
+      txtValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
   }
 }
-
-// renderToDo(array) - tasks or filterResult
-// input search : event: keyup 
-// let searchValue = e.target.value 
-// filterResult = filter() with searchValue => a new array with filterd item 
-//  renderToDo(filterResult)
 
 // Render section
 const renderToDo = () => {
@@ -83,25 +70,52 @@ const renderToDo = () => {
     const list = document.createElement("li");
     list.classList.add("todo-list");
 
-    // Checkbox
+    // Custom Checkbox Wrapper
+    const checkboxWrapper = document.createElement("div");
+    checkboxWrapper.className = "checkbox-wrapper-12";
+
+    const cbxDiv = document.createElement("div");
+    cbxDiv.className = "cbx";
+
     const todoCheckbox = document.createElement("input");
     todoCheckbox.type = "checkbox";
-    todoCheckbox.id = `todo-${task.id}`;
+    todoCheckbox.id = `cbx-${task.id}`;
+    todoCheckbox.checked = task.completed;
 
+    const label = document.createElement("label");
+    label.setAttribute("for", todoCheckbox.id);
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("viewBox", "0 0 15 14");
+    svg.setAttribute("height", "14");
+    svg.setAttribute("width", "15");
+
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M2 8.36364L6.23077 12L13 2");
+    svg.appendChild(path);
+
+    // Add event listener for checkbox change
     todoCheckbox.addEventListener("change", () => {
+      list.classList.toggle("completed", todoCheckbox.checked);
+      notificationElement.textContent = todoCheckbox.checked
+        ? "Good job!!"
+        : "";
       if (todoCheckbox.checked) {
-        list.classList.add("completed");
-        notificationElemen.textContent = "Good job!!";
         setTimeout(() => {
-          notificationElemen.textContent = " ";
+          notificationElement.textContent = " ";
         }, 2000);
-      } else {
-        list.classList.remove("completed");
       }
     });
 
-    list.appendChild(todoCheckbox);
+    // Append elements to the checkbox wrapper
+    cbxDiv.appendChild(todoCheckbox);
+    cbxDiv.appendChild(label);
+    cbxDiv.appendChild(svg);
+    checkboxWrapper.appendChild(cbxDiv);
+    list.appendChild(checkboxWrapper);
 
+    // Todo text
     const todoText = document.createElement("span");
     todoText.textContent = task.name;
     todoText.classList.add("todo-text");
@@ -129,63 +143,13 @@ const renderToDo = () => {
   });
 };
 
-const renderFilteredToDoList = (tasks) => {
-  todoListElement.innerHTML = "";
-  tasks.forEach((task) => {
-    const list = document.createElement("li");
-    list.classList.add("todo-list");
-
-    // Checkbox
-    const todoCheckbox = document.createElement("input");
-    todoCheckbox.type = "checkbox";
-    todoCheckbox.id = `todo-${task.id}`;
-
-    todoCheckbox.addEventListener("change", () => {
-      if (todoCheckbox.checked) {
-        list.classList.add("completed");
-        notificationElemen.textContent = "Good job!!";
-        setTimeout(() => {
-          notificationElemen.textContent = " ";
-        }, 2000);
-      } else {
-        list.classList.remove("completed");
-      }
-    });
-
-    list.appendChild(todoCheckbox);
-
-    const todoText = document.createElement("span");
-    todoText.textContent = task.name;
-    todoText.classList.add("todo-text");
-    list.appendChild(todoText);
-
-    // Edit button
-    const toDoUpdateButton = document.createElement("button");
-    toDoUpdateButton.textContent = "Edit";
-    toDoUpdateButton.classList.add("edit-btn");
-    toDoUpdateButton.addEventListener("click", () =>
-      updateToDoItemById(task.id)
-    );
-    list.appendChild(toDoUpdateButton);
-
-    // Delete button
-    const toDoDeleteButton = document.createElement("button");
-    toDoDeleteButton.textContent = "Delete";
-    toDoDeleteButton.classList.add("delete-btn");
-    toDoDeleteButton.addEventListener("click", () =>
-      deleteToDoItemById(task.id)
-    );
-    list.appendChild(toDoDeleteButton);
-
-    todoListElement.appendChild(list);
-  });
-};
-
+// Update total task counter
 const updateTodoCounter = () => {
   todoCounter.textContent = `Total Tasks: ${toDoTasks.length}`;
   todoCounter.classList.add("todo-counter");
 };
 
+// Load tasks from localStorage on page load
 document.addEventListener("DOMContentLoaded", () => {
   toDoTasks = JSON.parse(localStorage.getItem("toDoTasks")) || [];
   renderToDo();

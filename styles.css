@@ -1,33 +1,40 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
+  font-family: "Open Sans", Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.header-container {
+  display: flex;
 }
 
 h1 {
-    text-align: center;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; 
-    position:relative; 
-    left: 10px;
+  font-family: "Fredericka the Great", cursive;
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  left: 10px;
+  margin-right: 30px;
 }
 
 .todo-container {
-    position: relative;
-    max-width: 500px;
-    margin: auto;
-    background: #fff8f0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  max-width: 500px;
+  margin: auto;
+  background: #fff8f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-
 .todo-form {
-    display: flex;
+  display: flex;
+ 
 }
 
 .todo-form input {
@@ -36,101 +43,104 @@ h1 {
   outline: none;
   background: #e0e7e1;
   padding: 10px 30px;
-font-size: 16px;
+  font-size: 16px;
   border-radius: 50px;
+  font-family: 'Patrick Hand', cursive;
 }
 
 .todo-form button {
-    position: absolute;
-    padding: 10px 30px;
-    border: none;
-    background: #557C56;
-    color: #fff;
-    border-radius: 50px;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    right: 20px; 
+  position: absolute;
+  padding: 13px 45px;
+  border: none;
+  background: #436B5C;
+  color: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  right: 20px;
 }
 
 .todo-form button:hover {
-    background: #486949;
+  background: #254036;
 }
 
 .todo-list {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 10px;
+  font-family: "Pacifico", cursive;
 }
 
 .todo-list li {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 10px;
-    border-bottom: 1px solid #717171;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #717171;
 }
 
 .todo-list li.completed {
-    text-decoration: line-through;
-    color: #aaa;
+  text-decoration: line-through;
+  color: #aaa;
 }
 
 .todo-text {
-    flex-grow: 1;
-    margin-right: 10px;
+  flex-grow: 1;
+  margin-right: 10px;
 }
 
 .edit-btn,
 .delete-btn {
-    padding: 5px 5px;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 80px; 
-    text-align: center; 
-    margin: 5px;
+  padding: 5px 5px;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 80px;
+  text-align: center;
+  margin: 5px;
 }
 
 .edit-btn {
-    background: #33372C; 
+  background: #BF9550;
 }
 
 .edit-btn:hover {
-    background: #151712; 
+  background: #8b6831;
 }
 
 .delete-btn {
-    background: #FF885B; 
+  background: #E25439;
 }
 
 .delete-btn:hover {
-    background: #f97342; 
+  background: #b03219;
 }
 
 .todo-counter {
-    position: absolute;
-    right: 30px; 
-    bottom: 10px; 
-    color: #333; 
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  color: #E6B5A6;
+  font-family: "Courier New", monospace;
 }
 
-.notification{
-    background-color: #486949;
-    text-align: center;
-    border: none;
-    color: white;
-    border-radius: 4px;
-}
+.notification {
+  background-color: #B7BF96;
+  text-align: center;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  width: 200px;
+  margin-bottom: 20px;
 
+}
 
 .search {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; 
-    position:relative; 
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  font-family: 'Patrick Hand', cursive;
 }
 
 .search-input {
@@ -142,12 +152,12 @@ font-size: 16px;
   padding: 0.5rem 1rem;
   border-radius: 30px;
   width: 12em;
-  transition: all ease-in-out .5s;
+  transition: all ease-in-out 0.5s;
   margin-right: -2rem;
-  
 }
 
-.search-input:hover, .search__input:focus {
+.search-input:hover,
+.search-input:focus {
   box-shadow: 0 0 1em #00000013;
 }
 
@@ -161,14 +171,10 @@ font-size: 16px;
   color: #ccc;
 }
 
-.search-input:focus + .search__button {
-  background-color: #f0eeee;
-}
-
 .search-button {
   border: none;
   background-color: #f4f2f2;
-  margin-top: .1em;
+  margin-top: 0.1em;
 }
 
 .search-button:hover {
@@ -179,4 +185,168 @@ font-size: 16px;
   height: 1.3em;
   width: 1.3em;
   fill: #b4b4b4;
+}
+
+/* Checkbox styles */
+.checkbox-wrapper-12 {
+  position: relative;
+  padding-right: 10px;
+}
+
+.checkbox-wrapper-12 > svg {
+  position: absolute;
+  top: -130%;
+  left: -170%;
+  width: 110px;
+  pointer-events: none;
+}
+
+.checkbox-wrapper-12 * {
+  box-sizing: border-box;
+}
+
+.checkbox-wrapper-12 input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+
+.checkbox-wrapper-12 input[type="checkbox"]:focus {
+  outline: 0;
+}
+
+.checkbox-wrapper-12 .cbx {
+  width: 24px;
+  height: 24px;
+}
+
+.checkbox-wrapper-12 .cbx input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #bfbfc0;
+  border-radius: 50%;
+}
+
+.checkbox-wrapper-12 .cbx label {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.checkbox-wrapper-12 .cbx svg {
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.checkbox-wrapper-12 .cbx svg path {
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 19;
+  stroke-dashoffset: 19;
+  transition: stroke-dashoffset 0.3s ease;
+  transition-delay: 0.2s;
+}
+
+.checkbox-wrapper-12 .cbx input:checked + label {
+  animation: splash-12 0.6s ease forwards;
+}
+
+.checkbox-wrapper-12 .cbx input:checked + label + svg path {
+  stroke-dashoffset: 0;
+}
+
+@keyframes splash-12 {
+  40% {
+    background: #557c56;
+    box-shadow: 0 -18px 0 -8px #6c896d;
+  }
+  100% {
+    background: #557c56;
+    box-shadow: 0 -36px 0 -10px transparent;
+  }
+}
+.cube-loader {
+  margin-top: 39px;
+  position: relative;
+  width: 25px; /* Reduced size */
+  height: 25px; /* Reduced size */
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotateX(-30deg) rotateY(0);
+  }
+  100% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+
+.cube-loader .cube-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube-loader .cube-wrapper .cube-span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(calc(90deg * var(--i))) translateZ(12.5px); /* Half of 25px */
+  background:#E6B5A6;
+  background: linear-gradient(
+    90deg,
+    #E6B5A6,
+    hsla(27, 100%, 85%, 1) 99%
+  );
+}
+
+.cube-top {
+  position: absolute;
+  width: 25px; /* Reduced size */
+  height: 25px; /* Reduced size */
+  background: hsla(0, 100%, 95%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(0, 100%, 95%, 1) 1%,
+    hsla(27, 100%, 85%, 1) 99%
+  );
+  transform: rotateX(90deg) translateZ(12.5px); /* Half of 25px */
+  transform-style: preserve-3d;
+}
+
+.cube-top::before {
+  content: "";
+  position: absolute;
+  width: 8px; /* Reduced size */
+  height: 8px; /* Reduced size */
+  background: hsla(0, 100%, 95%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(0, 100%, 95%, 1) 1%,
+    hsla(27, 100%, 85%, 1) 99%
+  );
+  transform: translateZ(-30px); /* Adjusted for half of 60px */
+  filter: blur(3px); /* Reduced blur for smaller size */
+  box-shadow: 0 0 3px #323232, 0 0 5px hsl(176.61, 42.28%, 40.7%) 19.6%,
+    0 0 8px #323232, 0 0 10px hsl(176.61, 42.28%, 40.7%) 19.6%;
 }
