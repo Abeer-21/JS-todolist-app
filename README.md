@@ -1,56 +1,44 @@
 # Todo App
 
-This project aims to build a to do list application by applying HTML, CSS and Javascript. The application allows users to manage their tasks effectively.
+This is a **Todo List Application** built with **JavaScript**, which allows users to create, update, delete, and manage their tasks efficiently. It also includes features for marking tasks as completed, searching tasks, and handling notifications.
 
-## Level 1: Todo App Basic Requirements
+## Features
 
-In this level, the application includes the following features:
+1. **Create, Delete, and Update a Task:**
 
-1. Adding a Todo:
+   - Users can create a new task, delete existing tasks, and update the descriptions of their tasks.
 
-   - Display an input field where users can enter a new todo item.
-   - Include an "Add" button to add the entered todo item to the list.
+2. **Mark Task as Completed or Uncompleted:**
 
-2. Rendering Todo List:
+   - Users can mark a task as completed by checking a checkbox next to the task.
+   - Tasks can be marked as uncompleted if they are unchecked.
 
-   - Render the list of todos on the screen.
-   - Each todo item should display a checkbox and the task description.
+3. **Search Tasks Using Debounce:**
 
-3. Deleting a Todo:
-   - Implement a "Delete" button next to each todo item.
-   - When the button is clicked, remove the corresponding todo item from the list.
+   - A search bar allows users to filter tasks based on their description.
+   - The search functionality uses **debounce** to handle rapid input and avoid unnecessary re-renders.
 
-## Level 2: Todo App Additional Requirements
+4. **Notification Handling:**
+   - Notifications will be shown to the user when a task is added, updated, or deleted.
 
-In addition to the basic requirements, the application enhances its functionality with the following features:
+## Demo
 
-1. Editing a Todo:
+You can check out the live demo of the Todo App at the following link:
 
-   - Implement an "Edit" button next to each todo item.
-   - When the button is clicked, allow users to update the task description of the corresponding todo.
+[Deploy Link](#insert-deploy-link-here)
 
-2. Todo Counter:
-   - Include a counter that displays the total number of todo items.
+## Technologies Used
 
-## Level 3: Todo App Bonus Requirements (Optional)
+- **HTML** for the structure of the app.
+- **CSS** for styling and layout.
+- **JavaScript** for functionality, including task management and event handling.
 
-If you have a higher skill level and finish the previous requirements before the deadline, you can tackle the following bonus tasks:
+## How to Run Locally
 
-1. Persistent Storage:
+To run the Todo App locally on your machine, follow these steps:
 
-   - Add the ability to persist todo items using local storage.
-   - Ensure that the list remains intact even after the page is refreshed.
+1. Clone this repository:
 
-2. Search Functionality:
-
-   - Implement a search functionality that allows users to search for specific todo items based on keywords.
-
-3. Peer Review:
-   - Review the code and implementation of 2 assignments from other participants.
-   - Provide constructive feedback and suggestions for improvement.
-
-`Please note that the bonus requirements and reviews are optional and can be completed if you have additional time and advanced skills.`
-
-### Deadline : 15-10-2024
-
-Happy coding!
+   ```bash
+   git clone https://github.com/Abeer-21/JS-todolist-app
+   ```
